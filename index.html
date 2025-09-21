@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>DoPlo12cz – Vizitka</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ff0000, #9146ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+    }
+    .card {
+      background-color: rgba(0,0,0,0.7);
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      width: 400px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      border: 3px solid #fff;
+      object-fit: cover;
+    }
+    .card h1 { font-size: 28px; margin-bottom: 10px; }
+    .card p { font-size: 16px; margin-bottom: 20px; line-height: 1.4; }
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #fff;
+      color: #000;
+      font-size: 24px;
+      text-decoration: none;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+    .links a:hover { transform: scale(1.2); background-color: #ffea00; }
+    .youtube { color: #ff0000; }
+    .twitch { color: #9146ff; }
+    .discord { color: #7289da; }
+
+    /* tlačítko ZÁJMY */
+    .hobby-button {
+      margin-top: 10px;
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      text-transform: uppercase; /* ALL CAPS */
+      transition: transform 0.2s, background-color 0.2s;
+    }
+    .hobby-button:hover { transform: scale(1.05); background-color: #333; }
+
+    /* panel se zájmy s animací */
+    .hobbies-panel {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
+      background-color: #fff;
+      color: #000;
+      border-radius: 10px;
+      text-align: left;
+      padding: 0 15px; /* jen padding při otevření */
+    }
+    .hobbies-panel.show {
+      max-height: 500px;
+      opacity: 1;
+      padding: 15px;
+    }
+    .hobbies-panel h3 {
+      margin-bottom: 10px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .hobbies-panel ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+    .hobbies-panel ul li {
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="https://yt3.googleusercontent.com/xuzxxAmmDMFwyLPvSg8aKv8rESM_X-_V6CQYz4HnRDAP9dPLNAj-iyoHBe_zLOGBCwyffYn2yA=s160-c-k-c0x00ffffff-no-rj" alt="DoPlo12cz Profil">
+    <h1>DoPlo12cz</h1>
+    <p>Tvůrce obsahu na YouTube, Twitch a komunita na Discordu. Sleduj mě a přidej se!</p>
+    
+    <div class="links">
+      <a href="https://youtube.com/@DoPlo12cz" target="_blank" class="youtube" title="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.twitch.tv/doplo12cz" target="_blank" class="twitch" title="Twitch"><i class="fab fa-twitch"></i></a>
+      <a href="https://discord.gg/Cvf2cRtGex" target="_blank" class="discord" title="Discord"><i class="fab fa-discord"></i></a>
+    </div>
+
+    <!-- tlačítko ZÁJMY -->
+    <button class="hobby-button" onclick="toggleHobbies()">ZÁJMY</button>
+
+    <!-- panel se zájmy -->
+    <div class="hobbies-panel" id="hobbiesPanel">
+      <h3>Moje zájmy</h3>
+      <ul>
+        <li>MANGA/ANIME</li>
+        <li>ŠACHY</li>
+        <li>STŘIH VIDEÍ</li>
+        <li>SOCIÁLNÍ SÍTĚ</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function toggleHobbies() {
+      const panel = document.getElementById('hobbiesPanel');
+      panel.classList.toggle('show');
+    }
+  </script>
+</body>
+</html>
