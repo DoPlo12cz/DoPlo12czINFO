@@ -2,7 +2,8 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8">
-  <title>Informace - DoPlo12cz</title>
+  <title>DoPlo12cz – Vizitka</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
   <style>
@@ -13,17 +14,18 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
       color: #fff;
+      padding: 20px;
     }
     .card {
       background-color: rgba(0,0,0,0.7);
       padding: 40px;
       border-radius: 20px;
       text-align: center;
-      width: 400px;
+      width: 100%;
+      max-width: 400px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-      position: relative;
       transition: all 0.3s ease;
     }
     .card img {
@@ -62,20 +64,25 @@
 
     /* tlačítko ZÁJMY */
     .hobby-button {
+      display: block;
+      width: 100%;
       margin-top: 10px;
-      padding: 12px 25px;
+      padding: 14px 25px;
       font-size: 16px;
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      background-color: #000;
-      color: #fff;
       font-family: 'Poppins', sans-serif;
       font-weight: 500;
-      text-transform: uppercase; /* ALL CAPS */
+      text-transform: uppercase;
       transition: transform 0.2s, background-color 0.2s;
+      background-color: #000;
+      color: #fff;
     }
-    .hobby-button:hover { transform: scale(1.05); background-color: #333; }
+    .hobby-button:hover { 
+      transform: scale(1.05);
+      background-color: #333;
+    }
 
     /* panel se zájmy s animací */
     .hobbies-panel {
@@ -87,7 +94,7 @@
       color: #000;
       border-radius: 10px;
       text-align: left;
-      padding: 0 15px; /* jen padding při otevření */
+      padding: 0 15px;
     }
     .hobbies-panel.show {
       max-height: 500px;
@@ -107,6 +114,32 @@
       text-transform: uppercase;
       margin-bottom: 5px;
     }
+
+    /* 🔹 Responsivní úpravy */
+    @media (max-width: 600px) {
+      .card {
+        max-width: 100%;
+        padding: 25px;
+      }
+      .card img {
+        width: 100px;
+        height: 100px;
+      }
+      .card h1 { font-size: 24px; }
+      .card p { font-size: 14px; }
+      .links {
+        gap: 15px;
+      }
+      .links a {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+      }
+      .hobby-button {
+        font-size: 14px;
+        padding: 12px 20px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -114,14 +147,14 @@
     <img src="https://yt3.googleusercontent.com/xuzxxAmmDMFwyLPvSg8aKv8rESM_X-_V6CQYz4HnRDAP9dPLNAj-iyoHBe_zLOGBCwyffYn2yA=s160-c-k-c0x00ffffff-no-rj" alt="DoPlo12cz Profil">
     <h1>DoPlo12cz</h1>
     <p>Tvůrce obsahu na YouTube, Twitch a komunita na Discordu. Sleduj mě a přidej se!</p>
-    
+
     <div class="links">
       <a href="https://youtube.com/@DoPlo12cz" target="_blank" class="youtube" title="YouTube"><i class="fab fa-youtube"></i></a>
       <a href="https://www.twitch.tv/doplo12cz" target="_blank" class="twitch" title="Twitch"><i class="fab fa-twitch"></i></a>
       <a href="https://discord.gg/Cvf2cRtGex" target="_blank" class="discord" title="Discord"><i class="fab fa-discord"></i></a>
     </div>
 
-    <!-- tlačítko ZÁJMY -->
+    <!-- ZÁJMY tlačítko -->
     <button class="hobby-button" onclick="toggleHobbies()">ZÁJMY</button>
 
     <!-- panel se zájmy -->
@@ -144,5 +177,7 @@
   </script>
 </body>
 </html>
+
+
 
 
