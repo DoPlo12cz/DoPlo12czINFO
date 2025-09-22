@@ -63,8 +63,8 @@
     .twitch { color: #9146ff; }
     .discord { color: #7289da; }
 
-    /* tlačítko ZÁJMY */
-    .hobby-button {
+    /* společný styl tlačítek */
+    .toggle-button {
       display: block;
       width: 100%;
       margin-top: 15px;
@@ -80,13 +80,13 @@
       background-color: #000;
       color: #fff;
     }
-    .hobby-button:hover { 
+    .toggle-button:hover { 
       transform: scale(1.05);
       background-color: #333;
     }
 
-    /* panel se zájmy s animací */
-    .hobbies-panel {
+    /* společný styl panelů */
+    .toggle-panel {
       max-height: 0;
       overflow: hidden;
       opacity: 0;
@@ -96,28 +96,33 @@
       border-radius: 10px;
       text-align: left;
       padding: 0 15px;
+      margin-top: 10px;
     }
-    .hobbies-panel.show {
-      max-height: 500px;
+    .toggle-panel.show {
+      max-height: 800px;
       opacity: 1;
       padding: 20px;
     }
-    .hobbies-panel h3 {
+    .toggle-panel h3 {
       margin-bottom: 12px;
       text-align: center;
       text-transform: uppercase;
     }
-    .hobbies-panel ul {
+    .toggle-panel ul {
       list-style-type: disc;
       padding-left: 20px;
     }
-    .hobbies-panel ul li {
+    .toggle-panel ul li {
       text-transform: uppercase;
       margin-bottom: 8px;
       font-size: 16px;
     }
+    .toggle-panel p {
+      font-size: 15px;
+      line-height: 1.5;
+    }
 
-    /* 📱 Responsivní úpravy pro mobily */
+    /* 📱 Responsivní úpravy */
     @media (max-width: 600px) {
       body { padding: 10px; }
       .card {
@@ -131,21 +136,18 @@
       }
       .card h1 { font-size: 26px; }
       .card p { font-size: 15px; }
-      .links {
-        gap: 25px;
-      }
+      .links { gap: 25px; }
       .links a {
         width: 75px;
         height: 75px;
         font-size: 34px;
       }
-      .hobby-button {
+      .toggle-button {
         font-size: 20px;
         padding: 20px;
       }
-      .hobbies-panel ul li {
-        font-size: 18px;
-      }
+      .toggle-panel ul li, 
+      .toggle-panel p { font-size: 17px; }
     }
   </style>
 </head>
@@ -161,11 +163,21 @@
       <a href="https://discord.gg/Cvf2cRtGex" target="_blank" class="discord" title="Discord"><i class="fab fa-discord"></i></a>
     </div>
 
-    <!-- ZÁJMY tlačítko -->
-    <button class="hobby-button" onclick="toggleHobbies()">ZÁJMY</button>
+    <!-- tlačítko O KANÁLU -->
+    <button class="toggle-button" onclick="togglePanel('aboutPanel')">O MÉM KANÁLU</button>
+    <div class="toggle-panel" id="aboutPanel">
+      <h3>O mém kanálu</h3>
+      <p>
+        Kanál DoPlo12cz nabízí mix anime, her a zábavy. Najdeš tu krátké edity oblíbených anime jako <b>Chainsaw Man</b>, <b>One Piece</b> nebo <b>Jujutsu Kaisen</b>. 
+        K tomu autor hraje například: <b>Minecraft</b> a <b>Roblox</b>.<br><br>
+        Kanál je přátelský a pohodový, vhodný pro fanoušky anime a her, kteří se chtějí bavit a objevovat nové věci. 
+        Na Discordu můžeš navíc sdílet zážitky a bavit se s ostatními.
+      </p>
+    </div>
 
-    <!-- panel se zájmy -->
-    <div class="hobbies-panel" id="hobbiesPanel">
+    <!-- tlačítko ZÁJMY -->
+    <button class="toggle-button" onclick="togglePanel('hobbiesPanel')">ZÁJMY</button>
+    <div class="toggle-panel" id="hobbiesPanel">
       <h3>Moje zájmy</h3>
       <ul>
         <li>MANGA/ANIME</li>
@@ -177,15 +189,13 @@
   </div>
 
   <script>
-    function toggleHobbies() {
-      const panel = document.getElementById('hobbiesPanel');
+    function togglePanel(id) {
+      const panel = document.getElementById(id);
       panel.classList.toggle('show');
     }
   </script>
 </body>
 </html>
-
-
 
 
 
