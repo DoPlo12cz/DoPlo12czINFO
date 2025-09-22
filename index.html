@@ -8,7 +8,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    
+    html, body { height: 100%; }
+
     /* výchozí pozadí pro PC */
     body {
       font-family: 'Arial', sans-serif;
@@ -16,7 +17,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
       color: #fff;
       padding: 20px;
     }
@@ -30,6 +30,8 @@
       max-width: 400px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.5);
       transition: all 0.3s ease;
+      z-index: 1;
+      position: relative;
     }
     .card img {
       width: 120px;
@@ -127,10 +129,17 @@
 
     /* mobilní úpravy a pozadí galaxie */
     @media (max-width: 600px) {
-      body { 
+      body {
         padding: 10px;
+        background: none;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
         background: url('https://cdn.vectorstock.com/i/preview-1x/42/59/a-galaxy-space-sky-with-stars-and-nebula-vector-25564259.jpg') no-repeat center center;
         background-size: cover;
+        z-index: 0;
       }
       .card { max-width: 100%; width: 100%; padding: 25px 15px; }
       .card img { width: 120px; height: 120px; }
