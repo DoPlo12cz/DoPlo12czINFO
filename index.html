@@ -63,7 +63,7 @@
     .twitch { color: #9146ff; }
     .discord { color: #7289da; }
 
-    /* společný styl tlačítek */
+    /* tlačítka */
     .toggle-button {
       display: block;
       width: 100%;
@@ -85,7 +85,7 @@
       background-color: #333;
     }
 
-    /* společný styl panelů */
+    /* panely */
     .toggle-panel {
       max-height: 0;
       overflow: hidden;
@@ -122,32 +122,17 @@
       line-height: 1.5;
     }
 
-    /* 📱 Mobilní úpravy */
+    /* mobil */
     @media (max-width: 600px) {
       body { padding: 10px; }
-      .card {
-        max-width: 100%;
-        width: 100%;
-        padding: 25px 15px;
-      }
-      .card img {
-        width: 120px;
-        height: 120px;
-      }
+      .card { max-width: 100%; width: 100%; padding: 25px 15px; }
+      .card img { width: 120px; height: 120px; }
       .card h1 { font-size: 24px; }
       .card p { font-size: 14px; }
       .links { gap: 20px; }
-      .links a {
-        width: 60px;
-        height: 60px;
-        font-size: 28px;
-      }
-      .toggle-button {
-        font-size: 16px;
-        padding: 14px 20px;
-      }
-      .toggle-panel ul li, 
-      .toggle-panel p { font-size: 15px; }
+      .links a { width: 60px; height: 60px; font-size: 28px; }
+      .toggle-button { font-size: 16px; padding: 14px 20px; }
+      .toggle-panel ul li, .toggle-panel p { font-size: 15px; }
     }
   </style>
 </head>
@@ -163,8 +148,8 @@
       <a href="https://discord.gg/Cvf2cRtGex" target="_blank" class="discord" title="Discord"><i class="fab fa-discord"></i></a>
     </div>
 
-    <!-- tlačítko O KANÁLU -->
-    <button class="toggle-button" onclick="togglePanel('aboutPanel')">O MÉM KANÁLU</button>
+    <!-- O kanálu -->
+    <button class="toggle-button" onclick="toggleAccordion('aboutPanel')">O MÉM KANÁLU</button>
     <div class="toggle-panel" id="aboutPanel">
       <h3>O mém kanálu</h3>
       <p>
@@ -175,8 +160,8 @@
       </p>
     </div>
 
-    <!-- tlačítko ZÁJMY -->
-    <button class="toggle-button" onclick="togglePanel('hobbiesPanel')">ZÁJMY</button>
+    <!-- Zájmy -->
+    <button class="toggle-button" onclick="toggleAccordion('hobbiesPanel')">ZÁJMY</button>
     <div class="toggle-panel" id="hobbiesPanel">
       <h3>Moje zájmy</h3>
       <ul>
@@ -189,9 +174,12 @@
   </div>
 
   <script>
-    function togglePanel(id) {
-      const panel = document.getElementById(id);
-      panel.classList.toggle('show');
+    function toggleAccordion(id) {
+      const panels = document.querySelectorAll('.toggle-panel');
+      panels.forEach(panel => {
+        if(panel.id !== id) panel.classList.remove('show');
+      });
+      document.getElementById(id).classList.toggle('show');
     }
   </script>
 </body>
